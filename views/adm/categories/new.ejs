@@ -1,0 +1,18 @@
+<%- include('../../partials/header.ejs') %>
+
+<body>
+    <%- include ('../../partials/navbar.ejs')%>
+
+    <section class="container">
+        <form class="form-group p-3 mt-5 w-75 mx-auto" style="border: 1px solid #ccc;border-radius: 12px;" action="/categories/save" method="post">
+            <hr><legend class="text-center">Cadastro de Categoria</legend><hr>
+            <fieldset class="text-center">
+                <input class="form-control w-100" name="title" type="text" placeholder="Defina o título da categoria" required>
+                <button class="btn btn-success w-50 mt-3" type="submit">Cadastrar</button>
+            </fieldset>
+        </form>
+    </section>
+</body>
+
+
+<%- include('../../partials/footer.ejs')%>
