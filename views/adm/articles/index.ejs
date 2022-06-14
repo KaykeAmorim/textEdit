@@ -1,0 +1,50 @@
+<%-include('../../partials/header.ejs')%>
+<body>
+    <%-include('../../partials/navbar.ejs')%>
+    <section>
+        <article class="container">
+            <hr><h2 class="text-center">Artigos</h2><hr>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Título</th>
+                        <th>Slug</th>
+                        <th>Categoria</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%articlesInfo.forEach(articleInfo => {%>
+                        <tr>
+                            <th><%=articleInfo.id%></th>
+                            <th><%=articleInfo.title%></th>
+                            <th><%=articleInfo.slug%></th>
+                            <th>    
+                                <form method="get" action="/adm/articles/edit/<%=articleInfo.id%>" style="display: inline;">
+                                    <input type="hidden" name="id" value="<%=articleInfo.id%>">
+                                    <button class="btn btn-warning">Editar</button>
+                                </form>
+
+                                <form method="post" action="/articles/delete" style="display: inline;" onsubmit="confirmarDelecao(event)">
+                                    <input type="hidden" name="id" value="<%=articleInfo.id%>">
+                                    <button class="btn btn-danger">Deletar</button>
+                                </form>
+                            </th>
+                        </tr>
+                    <%})%>
+                </tbody>
+            </table>
+            <a class="btn btn-success" href="/adm/articles/new">Criar nova categoria</a>
+        </article>
+    </section>
+</body>
+<script>
+    function confirmarDelecao(event){
+        if(confirm("Certeza que deseja deletar está categoria ?"));
+        else{
+            event.preventDefault();
+        }
+    }
+</script>
+<%-include('../../partials/footer.ejs')%>
